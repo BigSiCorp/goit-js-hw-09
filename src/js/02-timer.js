@@ -1,11 +1,13 @@
 import flatpickr from 'flatpickr';
 import 'flatpickr/dist/flatpickr.min.css';
 
-const input = document.querySelector('#datetime-picker');
 const startBtn = document.querySelector('[data-start]');
+const subscriptions = document.querySelectorAll('.field');
+const timer = document.querySelector('.timer');
+let subscription = timer.querySelector('.field');
 let setTime = 0;
 
-startBtn.disabled = true;
+startBtn.setAttribute('disabled', true);
 const options = {
   enableTime: true,
   time_24hr: true,
@@ -17,16 +19,21 @@ const options = {
       alert('Please choose a date in the future');
       return;
     }
-    startBtn.disabled = false;
+    startBtn.removeAttribute('disabled');
   },
 };
 
-const fp = flatpickr('#datetime-picker', options);
+flatpickr('#datetime-picker', options);
 
 startBtn.addEventListener('click', convertMs);
 
 function convertMs() {
   // Number of milliseconds per unit of time
+  startBtn.setAttribute('disabled', true);
+  for (subscription of subscriptions) {
+    subscription.querySelector('.label').textContent = ':';
+    timer.lastElementChild.querySelector('.label').textContent = '';
+  }
   const timerId = setInterval(() => {
     const second = 1000;
     const minute = second * 60;
