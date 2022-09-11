@@ -18,4 +18,19 @@ img {
 }
 .timer {
   display: flex;
+  column-gap: 15px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.field .value {
+  font-size: 24px;
+}
+
+.field .label {
+  font-size: 14px;
 }

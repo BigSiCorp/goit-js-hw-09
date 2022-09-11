@@ -30,10 +30,10 @@ startBtn.addEventListener('click', convertMs);
 function convertMs() {
   // Number of milliseconds per unit of time
   startBtn.setAttribute('disabled', true);
-  for (subscription of subscriptions) {
-    subscription.querySelector('.label').textContent = ':';
-    timer.lastElementChild.querySelector('.label').textContent = '';
-  }
+  //for (subscription of subscriptions) {
+  //subscription.querySelector('.label').textContent = ':';
+  //timer.lastElementChild.querySelector('.label').textContent = '';
+
   const timerId = setInterval(() => {
     const second = 1000;
     const minute = second * 60;
@@ -63,7 +63,9 @@ function convertMs() {
 }
 
 function countDown({ days, hours, minutes, seconds }) {
-  document.querySelector('[data-days]').textContent = days;
+  document.querySelector('[data-days]').textContent = days
+    .toString()
+    .padStart(2, '0');
   document.querySelector('[data-hours]').textContent = hours
     .toString()
     .padStart(2, '0');
