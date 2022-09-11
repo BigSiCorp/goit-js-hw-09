@@ -55,6 +55,8 @@ function convertMs() {
     countDown({ days, hours, minutes, seconds });
     if (days === 0 && hours === 0 && minutes === 0 && seconds === 0) {
       clearInterval(timerId);
+      startBtn.removeAttribute('disabled');
+      picker.removeAttribute('disabled');
     }
     return { days, hours, minutes, seconds };
   }, 1000);
