@@ -6,6 +6,7 @@ const subscriptions = document.querySelectorAll('.field');
 const timer = document.querySelector('.timer');
 let subscription = timer.querySelector('.field');
 let setTime = 0;
+const picker = document.querySelector('#datetime-picker');
 
 startBtn.setAttribute('disabled', true);
 const options = {
@@ -30,9 +31,7 @@ startBtn.addEventListener('click', convertMs);
 function convertMs() {
   // Number of milliseconds per unit of time
   startBtn.setAttribute('disabled', true);
-  //for (subscription of subscriptions) {
-  //subscription.querySelector('.label').textContent = ':';
-  //timer.lastElementChild.querySelector('.label').textContent = '';
+  picker.setAttribute('disabled', true);
 
   const timerId = setInterval(() => {
     const second = 1000;
