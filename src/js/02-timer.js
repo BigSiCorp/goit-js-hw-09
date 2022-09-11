@@ -2,7 +2,7 @@ import flatpickr from 'flatpickr';
 import 'flatpickr/dist/flatpickr.min.css';
 
 const startBtn = document.querySelector('[data-start]');
-const subscriptions = document.querySelectorAll('.field');
+const subscriptions = document.querySelectorAll('.value');
 const timer = document.querySelector('.timer');
 let subscription = timer.querySelector('.field');
 let setTime = 0;
@@ -41,7 +41,6 @@ function convertMs() {
 
     // Remaining days
     const days = Math.floor((setTime - Date.now()) / day);
-    console.log();
     // Remaining hours
     const hours = Math.floor(((setTime - Date.now()) % day) / hour);
     // Remaining minutes
@@ -62,16 +61,10 @@ function convertMs() {
 }
 
 function countDown({ days, hours, minutes, seconds }) {
-  document.querySelector('[data-days]').textContent = days
-    .toString()
-    .padStart(2, '0');
-  document.querySelector('[data-hours]').textContent = hours
-    .toString()
-    .padStart(2, '0');
-  document.querySelector('[data-minutes]').textContent = minutes
-    .toString()
-    .padStart(2, '0');
-  document.querySelector('[data-seconds]').textContent = seconds
-    .toString()
-    .padStart(2, '0');
+  const timeData = { days, hours, minutes, seconds };
+  for (const el in timeData) {
+    document.querySelector(`[data-${el}]`).textContent = timeData[`${el}`]
+      .toString()
+      .padStart(2, '0');
+  }
 }
